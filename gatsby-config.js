@@ -3,5 +3,5 @@ module.exports = {
     title: `What Have You Liked Recently`,
     siteUrl: `https://www.yourdomain.tld`,
   },
-  plugins: [],
+  plugins: [ 'gatsby-plugin-charts-css'],
 }
