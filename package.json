@@ -1,0 +1,22 @@
+{
+  "name": "what-have-you-liked-recently",
+  "version": "1.0.0",
+  "private": true,
+  "description": "what-have-you-liked-recently",
+  "author": "gi-lom",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "gatsby": "^4.20.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  }
+}
