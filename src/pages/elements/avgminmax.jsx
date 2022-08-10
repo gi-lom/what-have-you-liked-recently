@@ -1,5 +1,5 @@
 import React from "react"
-import getFrequencies from "../ranges/avgminmax";
+import getFrequencies from "../../modules/ranges/avgminmax";
 
 const howMany = (minmax, which) => {
     let isare = minmax.length > 1 ? "s are" : " is";

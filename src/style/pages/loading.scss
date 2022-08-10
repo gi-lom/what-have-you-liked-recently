@@ -1,0 +1,29 @@
+@use '../_base';
+@use '../mixins.scss' as mixins;
+@use '../variables.scss' as v;
+
+#login-button {
+    @include mixins.login-button($col: v.$loading-color);
+    
+    #login-button-text {
+        position: absolute;
+    }
+    
+    #login-button-border {
+        @include mixins.login-button($col: transparent);
+        position: absolute;
+        z-index: 10px;
+        height: 95%;
+        width: 95%;
+        box-shadow: none;
+        border: 5px solid transparent;
+        border-top: 5px solid v.$background-color;
+        border-radius: 50%;
+        animation: spin 2s linear infinite;
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

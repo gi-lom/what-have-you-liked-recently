@@ -1,0 +1,91 @@
+@use 'variables.scss' as v;
+
+@mixin login-button($col) {
+    background-color: $col;
+    margin: auto;
+    font-family: v.$title-font;
+    font-size: 200%;
+    text-align: center;
+    height: v.$login-button-size;
+    width: v.$login-button-size;
+    border-radius: 50%;
+    border: 0px;
+    box-shadow: 15px 15px v.$box-shadow-color;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin header-welcome {
+    margin: 30px 0 30px 0;
+    #title {
+        height: auto;
+        margin: auto;
+        position: relative;
+        font-size: 350%;
+        width: 500px;
+        box-shadow: 15px 15px v.$box-shadow-color;
+        #title-components {
+            line-height: 1.5;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        #title-1 {
+            position: relative;
+            display: block;
+            right: 50px;
+        }
+        #title-2 {
+            position: relative;
+            display: block;
+            left: 50px;
+        }
+        #title-3 {
+            position: relative;
+            clear: both;
+        }
+    }
+    #slogan {
+        font-size: 135%;
+        
+        margin-top: 20px;
+        padding-top: 10px;
+        #slogan-1, #slogan-2 {
+            position: relative;
+            display: block;
+        }
+    }
+    @media screen and (max-width: 625px) {
+        margin: 5% 0 5% 0;
+            #title {
+                width: 90%;
+                height: auto;
+                margin: auto;
+                padding-left: 0;
+                padding-right: 0;
+                font-size: 9vw;
+                #title-1 {
+                    right: 40px;
+                }
+            }
+    }
+}
+
+@mixin header-not-welcome {
+    margin-bottom: 75px;
+    #title {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: max-content;
+        font-size: 200%;
+        padding: 10px 30px;
+    }
+    @media screen and (max-width: 690px) {
+            #title {
+                width: 85%;
+            }
+    }
+}

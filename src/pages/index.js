@@ -6,21 +6,27 @@ import Loading from "./loading.jsx";
 import Stats from "./stats.jsx";
 import Error from "./error.jsx";
 
+import "@fontsource/secular-one";
+import "@fontsource/shrikhand";
+import "@fontsource/montserrat";
 
 class MainPart extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {stats: null};
+    this.state = { stats: null };
   }
 
   componentDidMount() {
-    setLocalStorage(this.state.stats === null)
-    .then((finalResult) => {
-      if (finalResult !== null)
-        this.state.stats = finalResult;
-        this.setState({ state: this.state });
-    });
+    if (!(this.state.hasBeenLoggedOut))
+      setLocalStorage(this.state.stats === null)
+      .then((finalResult) => {
+        if (finalResult !== null)
+          this.state.stats = finalResult;
+          this.setState({ state: this.state });
+      });
+    else
+      this.state.hasBeenLoggedOut = false;
   }
 
   render() {
@@ -37,11 +43,11 @@ class MainPart extends React.Component {
     else {
       if (Object.keys(this.state.stats).includes("error"))
         return (
-          <Error stats={this.state.stats} />
+          <Error stats={this.state.stats} deleteStats={this.deleteStats} />
         )
       else
         return (
-          <Stats stats={this.state.stats} />
+          <Stats stats={this.state.stats} deleteStats={this.deleteStats} />
         )
     }
   }

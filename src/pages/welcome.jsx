@@ -1,20 +1,23 @@
 import React from "react"
+
 import Header from "./header.jsx";
 import spotifyGetAccessToken from "./../modules/token.jsx";
+
+import '../style/pages/welcome.scss';
 
 const Welcome = () => {
   return (
     <div>
 
-      <Header />
+      <Header headerClass={"header-welcome"}/>
 
-      <div id="loginButtonSection">
-        <button id="loginButton" onClick={spotifyGetAccessToken}>Start here</button>
+      <div id="login-button-section">
+        <button id="login-button" onClick={spotifyGetAccessToken}>START</button>
       </div>
         
-      <div id="cookieAlert">
-        This website does NOT use third-party cookies and any kind of tracking technology.<br />
-        The author of this website does not get any profit from it.< br />
+      <div id="cookie-alert">
+        This website does NOT use third-party cookies, except those from Spotify.<br />
+        No trackers are present, and the author of this website does not get any profit from the website.< br />
         HOWEVER, in order to work, it has to retrieve data from your Spotify account.<br />
         If you click on the login button, the author will take for granted you are fine with it.<br />
         <br />

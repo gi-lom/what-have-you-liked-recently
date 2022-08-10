@@ -12,7 +12,7 @@ const Stats = (props) => {
     let stats = props.stats;
     return (
         <div>
-            <Header />
+            <Header deleteStats={props.deleteStats} />
             <div id="stats">
                 {/*Artists*/}
                 <Artists stats={stats.artists} />

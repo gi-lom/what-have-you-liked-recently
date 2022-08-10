@@ -1,6 +1,6 @@
 import React from "react"
 
-import getFrequencies from "../ranges/release_dates"
+import getFrequencies from "../../modules/ranges/release_dates"
 
 const getTexts = (charts) => {
     return (

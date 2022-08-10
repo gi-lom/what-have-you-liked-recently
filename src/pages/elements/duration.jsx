@@ -1,5 +1,5 @@
 import React from "react"
-import getFrequencies from "../ranges/duration.jsx";
+import getFrequencies from "../../modules/ranges/duration.jsx";
 
 const millisecondsToMinutes = (millisec) => {
     let sec = parseInt(millisec/1000);

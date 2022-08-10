@@ -1,0 +1,27 @@
+@use '../_base';
+@use '../mixins.scss' as mixins;
+@use '../variables.scss' as v;
+
+#error-button {
+    @include mixins.login-button($col: v.$error-color);
+    color: white;
+    margin-bottom: 75px;
+    
+    #error-button-text {
+        position: absolute;
+        font-size: 200%;
+        left: 25px;
+        #error-button-desc {
+            position: absolute;
+            font-size: 30%;
+            left: 34px;
+            top: 75px;
+        }
+    }
+
+}
+
+#error {
+    font-family: v.$text-font;
+    font-size: 125%;
+}

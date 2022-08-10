@@ -1,0 +1,28 @@
+@use '../_base';
+@use '../mixins.scss' as mixins;
+@use '../variables.scss' as v;
+
+.header-welcome {
+    @include mixins.header-welcome;
+}
+
+#login-button-section {
+    margin-bottom: 45px;
+    button {
+        @include mixins.login-button($col: v.$button-color);
+        position: relative;
+        color: v.$button-text-color;
+        transition: 0.25s;
+    }
+    button:hover {
+        cursor: pointer;
+        transform: translate(15px, 15px);
+        box-shadow: 0px 0px;
+    }
+}
+
+#cookie-alert {
+    text-align: center;
+    font-family: v.$disclaimer-font;
+    font-size: v.$disclaimer-size;
+}

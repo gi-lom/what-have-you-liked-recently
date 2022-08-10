@@ -3,5 +3,13 @@ module.exports = {
     title: `What Have You Liked Recently`,
     siteUrl: `https://www.yourdomain.tld`,
   },
-  plugins: [ 'gatsby-plugin-charts-css'],
+  plugins: [
+    'gatsby-plugin-charts-css',
+    {
+      resolve: 'gatsby-plugin-sass',
+      options: {
+        useResolveUrlLoader: true
+      }
+    }
+  ],
 }
