@@ -23,20 +23,22 @@ const isThereSomeUndefined = (chart) => {
     if (chart > 0) {
         let plural = chart > 1 ? 's' : '';
         return (
-            <div> Could not find out the keys of {chart} songs{plural}</div>
+            <div className="alert"> Could not find out the keys of {chart} songs{plural}</div>
         )
     }
     return (<span />)
 
 }
 
-const getTds = (charts) => {
+const getTds = (charts, num) => {
     let tds = [];
     for (let i = 0; i < charts.length; i++)
         tds.push(
-            <td key={"td"+i} style={{"--size": "calc(" + charts[i]*100/50 + " / 100)"}} />
+            <tr key={"tr" + i}>
+                <td key={"td"+i} style={{"--size": "calc(" + charts[i]*100/num + " / 100)"}} />
+            </tr>
         )
-    return <tr>{tds}</tr>;
+    return tds;
 }
 
 const getLegends = (charts) => {
@@ -44,46 +46,41 @@ const getLegends = (charts) => {
     for (let i = 0; i < charts.length; i++)
         legends.push(
             <span className="legend-center">
-                <div className="legend-data">{charts[i]}</div>
-                <div className="legend-label">{keymap(i)}</div>
+                <div className="legend-data">{keymap(i)}</div>
+                <div className="legend-label">{charts[i]}</div>
             </span>
         )
     return <div className="legend">{legends}</div>;
 }
 
-const getGraph = (charts) => {
-    const legends = getLegends(charts.slice(0, 12))
-    const tds = getTds(charts.slice(0, 12))
+const getGraph = (charts, num) => {
+    const legends = getLegends(charts.slice(0, 12));
+    const tds = getTds(charts.slice(0, 12), num);
+    const undef = isThereSomeUndefined(charts[-1]);
     return (
         <div className="graph">
-            <table className="charts-css column show-labels">
+            <table className="charts-css column show-labels show-data-axes show-primary-axis show-10-secondary-axes data-spacing-2">
                 <tbody>
                     {tds}
                 </tbody>
             </table>
             {legends}
+            {undef}
         </div>
     )
 }
-
-const getChart = (charts) => {
-    const graph = getGraph(charts);
-    return (
-        <div className="chart">
-            <div className="big"> Keys </div>
-            <div className="description"> What key do the songs have? </div>
-            {graph}
-        </div>
-    )
-}
-
 
 const Keys = (props) => {
-    let chart = getChart(props.stats);
+    const charts = props.stats;
+    const num = props.num;
+    const graph = getGraph(charts, num);
     return (
-        <div className="stats-card">
-            {chart}
-            {isThereSomeUndefined(chart[-1])}
+        <div>
+            <div className="stats-cards-title">
+                <div className="big"> Keys </div>
+                <div className="description"> What key do the songs have? </div>
+            </div>
+            {graph}
         </div>
     )
 }

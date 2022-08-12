@@ -1,0 +1,237 @@
+@use '../_base';
+@use '../mixins.scss' as mixins;
+@use '../variables.scss' as v;
+
+#stats {
+    font-weight: bold;
+    font-size: 110%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    margin: 0px 30px 80px 30px;
+}
+
+.stats-card {
+    @include mixins.card-body;
+    font-family: v.$text-font;
+    flex: 2;
+    margin-bottom: 30px;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 30px;
+    width: auto;
+}
+
+.stats-card-columns {
+    flex: 4;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.alert {
+    margin: 0 7.5% 0 7.5%;
+    font-size: 50%;
+    color: gray;
+}
+
+.graph {
+    @include mixins.card-info-section;
+    padding: 15px;
+    background-color: transparent;
+
+    .multiple {
+        height: 20px;
+        margin: 15px 0;
+    }
+    
+    .show-labels {
+      height: 200px;
+      margin: 15px 0;
+    }
+
+    .column {
+        td {
+            border-radius: 5px 5px 0 0;
+        }
+        tr:nth-child(odd) {
+            --color: #f46565;
+        }
+        tr:nth-child(even) {
+            --color: #ffc765;
+        }
+    }
+
+    .bar {
+        .bar-left {
+            border-radius: 15px 0 0 15px;
+        }
+        .bar-right {
+            border-radius: 0 15px 15px 0;
+        }
+    }
+
+    .legend {
+        display: flex;
+
+        .legend-center {
+            width: 100%;
+            flex-flow: row wrap;
+            justify-content: space-around;
+            margin: -24px 0 0 0;
+
+            .legend-data, .legend-label {
+                padding: 0 3px;
+            }
+        }
+
+        .legend-left, .legend-right {
+            width: 100%;
+            flex-flow: row wrap;
+            justify-content: space-between;
+        }
+
+        .legend-left {
+            text-align: left;
+        }
+
+        .legend-right {
+            text-align: right;
+        }
+
+        .legend-data {
+            font-size: max(1vw, 12px);
+        }
+
+        .legend-label {
+            font-weight: bold;
+        }
+    }
+
+}
+
+.stats-cards-title {
+    font-family: v.$title-font;
+    font-weight: normal;
+    
+    .big {
+        font-size: 250%;
+    }
+    
+    .description {
+        font-size: 110%;
+        margin-top: -7.5px;
+        margin-bottom: 20px;
+    }
+}
+
+.text-info-section-artist {
+    @include mixins.card-body;
+    width: 100%;
+    margin: -45px 45px 0px 45px;
+    font-family: v.$text-font;
+    display: block;
+    height: auto;
+    padding: 30px;
+    font-weight: bold;
+}
+
+.text-info {
+    @include mixins.card-info;
+    .text-info-section {
+        @include mixins.card-info-section;
+        flex-grow: 2;
+        flex-shrink: 2;
+    }
+}
+
+.text-info-big  {
+    font-family: v.$title-font;
+    margin-top: 10px;
+    line-height: 110%;
+    font-size: 36px;
+    font-weight: normal;
+}
+
+.by {
+    font-family: v.$card-font;
+    font-weight: bold;
+    display: block;
+    font-size: 75%;
+    margin-bottom: 15px;
+}
+
+.text-info-small {
+    font-size: 16px;
+}
+
+.text-info-data {
+    font-family: v.$title-font;
+    font-weight: normal;
+    font-size: 24px;
+}
+
+@media screen and (max-width: 690px) {
+    #stats {
+        margin: -50px 0 80px 0;
+        padding: 15px 2px 0 2px;
+        border-radius: 50px 50px 0 0;
+        background-color: transparent;
+        width: 100%;
+        display: block;
+        position: relative;
+    }
+
+    .text-info-section-artist {
+        box-shadow: 5px 5px v.$box-shadow-color;
+        margin: -50px 0px 5px 0px;
+        width: 90.5%;
+    }
+
+    .stats-card {
+        width: 99%;
+        margin: 10px 0px;
+        padding: 10px 0px;
+        box-shadow: 5px 5px v.$box-shadow-color;
+
+        .graph {
+            margin: 0;
+            padding: 20px;
+            background-color: v.$card-color;
+
+            .legend {
+
+                .legend-data {
+                    font-size: min(2.75vw, 12px);
+                }
+                .legend-label {
+                    font-size: min(4.5vw, 18px);
+                }
+            }
+        }
+
+        .text-info {
+            margin: 0;
+        }
+
+        .artist {
+            margin: 0;
+        }
+
+        .stats-cards-title {
+            padding: 0 15px;
+        }
+    }
+
+    .legend-center, .legend-left, .legend-right {
+        font-size: 60%;
+    }
+
+    .multiple {
+        margin: 0;
+    }
+
+    .artist {
+        margin: -45px 5px -60px 5px;
+    }
+
+}

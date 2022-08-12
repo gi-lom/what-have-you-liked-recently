@@ -1,47 +1,41 @@
 import React from "react"
 
-const getGraph = (charts) => {
+const getGraph = (charts, num) => {
     return (
         <div className="graph">
             <table className="charts-css bar multiple stacked">
                 <tbody>
                     <tr>
-                        <td style={{"--size": "calc(" + charts + " / 50)"}} />
-                        <td style={{"--size": "calc(" + 50-charts + " / 50)"}} />
+                        <td className="bar-left" style={{"--size": "calc(" + charts + " / " + num}} />
+                        <td className="bar-right" style={{"--size": "calc(" + (num-charts) + " / " + num + ")"}} />
                     </tr>
                 </tbody>
             </table>
             <div className="legend">
                 <span className="legend-left">
-                    <div className="legend-data">{charts}</div>
-                    <div className="legend-label">Explicit</div>
+                    <div className="legend-data">Explicit</div>
+                    <div className="legend-label">{charts}</div>
                 </span>
                 <span className="legend-right">
-                    <div className="legend-data">{50-charts}</div>
-                    <div className="legend-label">Not explicit</div>
+                    <div className="legend-data">Not explicit</div>
+                    <div className="legend-label">{num-charts}</div>
                 </span>
             </div>
         </div>
     )
 }
 
-const getChart = (charts) => {
-    const graph = getGraph(charts);
-    return (
-        <div className="chart">
-            <div className="big"> Explicitness </div>
-            <div className="description"> How many songs contain explicit content? </div>
-            {graph}
-        </div>
-    )
-}
-
-
 const Explicit = (props) => {
-    let chart = getChart(props.stats);
+    const charts = props.stats;
+    const num = props.num;
+    const graph = getGraph(charts, num);
     return (
-        <div className="stats-card">
-            {chart}
+        <div>
+            <div className="stats-cards-title">
+                <div className="big"> Explicitness </div>
+                <div className="description"> How many songs contain explicit content? </div>
+            </div>
+            {graph}
         </div>
     )
 }

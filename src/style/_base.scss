@@ -2,7 +2,7 @@
 @use 'variables.scss' as v;
 
 body {
-    font-family: 100% v.$text-font;
+    font-family: v.$text-font;
     background-color: v.$background-color;
     color: v.$text-color;
     text-align: center;
@@ -29,7 +29,7 @@ header {
 }
 
 footer {
-    position: absolute;
+    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -41,5 +41,15 @@ footer {
     color: white;
     a {
         color: #CCCAA7;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    body {
+        width: 1920px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        
     }
 }

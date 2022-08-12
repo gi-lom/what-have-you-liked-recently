@@ -136,7 +136,7 @@ const spotifyGetLibrary = access_token => {
       	  if (el.explicit)
         	  stats.explicit++;
       	  //keys
-      	  stats.keys[el.key]++;
+          stats.keys[el.key]++;
       	  //mode
       	  stats.mode[el.mode]++;
       	  //avg/max/min:

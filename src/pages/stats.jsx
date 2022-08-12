@@ -8,35 +8,94 @@ import Keys from "./elements/keys.jsx"
 import Mode from "./elements/mode.jsx"
 import ReleaseDates from "./elements/release_dates.jsx"
 
+import '../style/pages/error.scss';
+import '../style/pages/stats.scss';
+
+
 const Stats = (props) => {
     let stats = props.stats;
-    return (
-        <div>
-            <Header deleteStats={props.deleteStats} />
-            <div id="stats">
-                {/*Artists*/}
-                <Artists stats={stats.artists} />
-                {/*Duration*/}
-                <Duration stats={stats.duration_ms} title={"Duration"} description={"How long are your songs?"} least={"shortest"} most={"longest"} />
-                {/*Release dates*/}
-                <ReleaseDates stats={stats.release_dates} />
-                {/*Mode*/}
-                <Mode stats={stats.mode} />
-                {/*Keys*/}
-                <Keys stats={stats.keys} />
-                {/*Explicit*/}
-                <Explicit stats={stats.explicit} />
-                {/*Popularity*/}
-                <AvgMinMax data={"Popularity"} stats={stats.popularity} title={"Popularity"} description={"How popular are your songs from 0 to 100?"} least={"least popular"} most={"most popular"} />
-                {/*Danceability*/}
-                <AvgMinMax data={"Danceability"} stats={stats.danceability} title={"Danceability"} description={"How much can you dance on your songs from 0 to 100?"} least={"least danceable"} most={"most danceable"} />
-                {/*Energy*/}
-                <AvgMinMax data={"Energy"} stats={stats.energy} title={"Energy"} description={"How energetic are your songs from 0 to 100?"} least={"least energetic"} most={"most energetic"} />
-                {/*Valence (called happiness in the frontend)*/}
-                <AvgMinMax data={"Happiness"} stats={stats.valence} title={"Happiness"} description={"How happy are your songs from 0 to 100?"} least={"least happy"} most={"happiest"} />
+    let num = props.stats.duration_ms.list.length;
+
+    if (num == 0)
+        return(
+            <div>
+                <Header headerClass={"header-not-welcome"} />
+                <div id="loader">
+                    <div id="error-button">
+                        <div id="error-button-text">
+                            0 <br />
+                            <span id="error-button-desc">songs found</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="error">
+                    <div id="errorDescription">
+                        You have no faved songs on your Spotify account. <br />
+                    </div>
+                </div>
             </div>
-        </div>
-    )
+        );
+
+    else {
+        let statsCards = [];
+        let statsCardsColumns = [];
+        let nakedCartsColumns = [
+            /*Mode*/
+            (<Mode stats={stats.mode} num={num}/>),
+            /*Keys*/
+            (<Keys stats={stats.keys} num={num}/>),
+            /*Explicit*/
+            (<Explicit stats={stats.explicit} num={num}/>),
+        ];
+        for (let i = 0; i < nakedCartsColumns.length; i++)
+            statsCardsColumns.push(
+                <div className="stats-card">
+                    {nakedCartsColumns[i]}
+                </div>
+            );
+        let statsCardsColumnsWrapped = (
+            <div className = "stats-card-columns">
+                {statsCardsColumns}
+            </div>
+        );
+        let nakedCarts = [
+            /*Duration*/
+            (<Duration stats={stats.duration_ms} title={"Duration"} description={"How long are your songs?"} least={"shortest"} most={"longest"} num={num}/>),
+            /*Release dates*/
+            (<ReleaseDates stats={stats.release_dates} num={num}/>),
+            /*Popularity*/
+            (<AvgMinMax data={"Popularity"} stats={stats.popularity} title={"Popularity"} description={"How popular are your songs?"} least={"least popular"} most={"most popular"} num={num}/>),
+            /*Danceability*/
+            (<AvgMinMax data={"Danceability"} stats={stats.danceability} title={"Danceability"} description={"How much can you dance on your songs?"} least={"least danceable"} most={"most danceable"} num={num}/>),
+            /*Energy*/
+            (<AvgMinMax data={"Energy"} stats={stats.energy} title={"Energy"} description={"How energetic are your songs?"} least={"least energetic"} most={"most energetic"} num={num}/>),
+            /*Valence (called happiness in the frontend)*/
+            (<AvgMinMax data={"Happiness"} stats={stats.valence} title={"Happiness"} description={"How happy are your songs?"} least={"least happy"} most={"happiest"} num={num}/>)
+        ];
+        for (let i = 0; i < nakedCarts.length; i++) {
+            if (i == 2) {
+                statsCards.push(statsCardsColumnsWrapped);
+                
+            }
+            statsCards.push(
+                <div className="stats-card">
+                    {nakedCarts[i]}
+                </div>
+            )
+        }
+        return (
+            <div>
+                <Header headerClass={"header-not-welcome"} />
+                {/*Artists*/}
+                <div id="large-stats">
+                    <Artists stats={stats.artists} num={num} />
+                    <div id="stats">
+                        {statsCards}        
+                    </div>
+                </div>
+            </div>
+        )
+    }
 }
 
 export default Stats

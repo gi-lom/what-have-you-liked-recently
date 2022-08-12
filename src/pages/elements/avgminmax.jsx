@@ -12,7 +12,10 @@ const howMany = (minmax, which) => {
                 artistList += ", ";
         }
         vals.push(
-            <div className="text-info-big"> {minmax[i].name} <span className="by"> by </span> {artistList} </div>
+            <div>
+                <div className="text-info-big"> {minmax[i].name} </div>
+                <span className="by"> {artistList} </span>
+            </div>
         )
     }
     return (
@@ -31,15 +34,15 @@ const getTexts = (charts) => {
         <div className="text-info">
             <div className="text-info-section">
                 {minValues}
-                <div className="text-info-small"> with a value of {Math.round(stats.min[0].value)}</div>
+                <div className="text-info-data"> {Math.round(stats.min[0].value)}%</div>
             </div>
             <div className="text-info-section">
                 {maxValues}
-                <div className="text-info-small"> with a value of {Math.round(stats.max[0].value)}</div>
+                <div className="text-info-data"> {Math.round(stats.max[0].value)}%</div>
             </div>
             <div className="text-info-section">
                 <div className="text-info-small"> Your average {charts.title.toLowerCase()} is </div>
-                <div className="text-info-big"> { Math.round(stats.list.reduce((a,b) => a+b, 0)/stats.list.length)} </div>
+                <div className="text-info-big"> { Math.round(stats.list.reduce((a,b) => a+b, 0)/stats.list.length)}% </div>
             </div>
         </div>
     )
@@ -50,7 +53,7 @@ const getLegends = (charts) => {
     for (let i = 0; i < Object.keys(charts).length; i++) {
         legends.push(
             <span className="legend-center">
-                <div className="legend-data">{Object.keys(charts)[i]}</div>
+                <div className="legend-data">{Object.keys(charts)[i]}%</div>
                 <div className="legend-label">{charts[Object.keys(charts)[i]]}</div>
             </span>
         )
@@ -74,8 +77,8 @@ const getGraph = (charts) => {
     const tds = getTds(charts);
     const legends = getLegends(charts);
     return (
-        <div>
-            <table className="charts-css column show-labels">
+        <div className="graph">
+            <table className="charts-css column show-labels show-data-axes show-primary-axis show-10-secondary-axes data-spacing-2">
                 <tbody>
                     {tds}
                 </tbody>
@@ -85,27 +88,20 @@ const getGraph = (charts) => {
     )
 }
 
-const getChart = (charts) => {
+const AvgMinMax = (props) => {
+    const charts = props;
     const texts = getTexts(charts);
     const frequencies = getFrequencies(
         charts.stats.list.map( (data) => { return data-(data%10) } ), 0, 100, 10);
     const graph = getGraph(frequencies);
     return (
         <div className="chart">
-            <div className="big"> {charts.title} </div>
-            <div className="description"> {charts.description} </div>
+            <div className="stats-cards-title">
+                <div className="big"> {charts.title} </div>
+                <div className="description"> {charts.description} </div>
+            </div>
             {texts}
             {graph}
-        </div>
-    )
-}
-
-
-const AvgMinMax = (props) => {
-    let chart = getChart(props);
-    return (
-        <div className="stats-card">
-            {chart}
         </div>
     )
 }

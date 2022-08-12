@@ -85,7 +85,31 @@
     }
     @media screen and (max-width: 690px) {
             #title {
-                width: 85%;
+                width: 82.5%;
+            }
+            #slogan {
+                padding: 0 15px;
             }
     }
+}
+
+@mixin card-body {
+    box-shadow: 15px 15px v.$box-shadow-color;
+    background-color: v.$card-color;
+    border-radius: 50px;
+    height: auto;
+}
+
+@mixin card-info {
+    margin: 20px 0 30px 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+@mixin card-info-section {
+    background-color: v.$text-info-color;
+    border-radius: 50px;
+    margin: 10px;
+    padding: 30px;
 }

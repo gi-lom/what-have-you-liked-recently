@@ -19,7 +19,10 @@ const howMany = (minmax, which) => {
                 artistList += ", ";
         }
         vals.push(
-            <div className="text-info-big"> {minmax[i].name} <span className="by"> by </span> {artistList} </div>
+            <div>
+                <div className="text-info-big"> {minmax[i].name} </div>
+                <span className="by"> {artistList}</span>
+            </div>
         )
     }
     return (
@@ -38,11 +41,11 @@ const getTexts = (charts) => {
         <div className="text-info">
             <div className="text-info-section">
                 {minValues}
-                <div className="text-info-small"> with a value of {millisecondsToMinutes(Math.round(stats.min[0].value))}</div>
+                <div className="text-info-data"> {millisecondsToMinutes(Math.round(stats.min[0].value))}</div>
             </div>
             <div className="text-info-section">
                 {maxValues}
-                <div className="text-info-small"> with a value of {millisecondsToMinutes(Math.round(stats.max[0].value))}</div>
+                <div className="text-info-data"> {millisecondsToMinutes(Math.round(stats.max[0].value))}</div>
             </div>
             <div className="text-info-section">
                 <div className="text-info-small"> Your average {charts.title.toLowerCase()} is </div>
@@ -55,7 +58,7 @@ const getTexts = (charts) => {
 const getLegends = (charts) => {
     let legends = [];
     for (let i = 0; i < Object.keys(charts).length; i++) {
-        let label = i == 0 ? "<2:00" : ( i == 9 ? "≥10:00" : i+":00");
+        let label = i == 0 ? "<2:00" : ( i == 9 ? "≥10:00" : i+1+":00");
         legends.push(
             <span className="legend-center">
                 <div className="legend-data">{label}</div>
@@ -82,8 +85,8 @@ const getGraph = (charts) => {
     const tds = getTds(charts);
     const legends = getLegends(charts);
     return (
-        <div>
-            <table className="charts-css column show-labels">
+        <div className="graph">
+            <table className="charts-css column show-labels show-data-axes show-primary-axis show-10-secondary-axes data-spacing-2">
                 <tbody>
                     {tds}
                 </tbody>
@@ -93,26 +96,19 @@ const getGraph = (charts) => {
     )
 }
 
-const getChart = (charts) => {
+const Duration = (props) => {
+    const charts = props;
     const texts = getTexts(charts);
     const frequencies = getFrequencies(charts.stats.list.map( (data) => { return data-(data%60000) } ));
     const graph = getGraph(frequencies);
     return (
         <div className="chart">
-            <div className="big"> {charts.title} </div>
-            <div className="description"> {charts.description} </div>
+            <div className="stats-cards-title">
+                <div className="big"> {charts.title} </div>
+                <div className="description"> {charts.description} </div>
+            </div>
             {texts}
             {graph}
-        </div>
-    )
-}
-
-
-const Duration = (props) => {
-    let chart = getChart(props);
-    return (
-        <div className="stats-card">
-            {chart}
         </div>
     )
 }

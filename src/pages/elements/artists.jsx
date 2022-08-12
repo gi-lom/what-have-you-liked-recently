@@ -1,5 +1,4 @@
 import React from "react"
-import "./styles.css"
 
    
 const orderArtists = (artists) => {
@@ -18,7 +17,8 @@ const orderArtists = (artists) => {
     return firstArtists;
 }
 
-const getArtistChart = (artistCharts) => {
+const Artists = (props) => {
+    let artistCharts = orderArtists(props.stats, props.num);
     let names = "";
     let pluralArtists = artistCharts.length > 1 ? "Your most faved artists are" : "Your most faved artist is";
     let pluralTracks = artistCharts[0][2] == 1 ? "" : "s";
@@ -28,20 +28,14 @@ const getArtistChart = (artistCharts) => {
         names += artistCharts[i][1];
     }
     return (
-        <div className="chart">
-            <div className="description"> {pluralArtists} </div>
-            <div className="big"> {names} </div>
-            <div className="description"> with {artistCharts[0][2]} track{pluralTracks} </div>
-            <div className="description"> {(artistCharts[0][2]*artistCharts.length/50)*100}% of your latest 50 faved tracks</div>
-        </div>
-    )
-}
-
-const Artists = (props) => {
-    let artistChart = getArtistChart(orderArtists(props.stats));
-    return (
-        <div id="statsCard">
-            {artistChart}
+        <div className="text-info">
+            <div className="text-info-section-artist">
+                <div> {pluralArtists} </div>
+                <div className="stats-cards-title">
+                    <div className="text-info-big"> {names} </div>
+                </div>
+                <div className="text-info-data"> {artistCharts[0][2]} track{pluralTracks} </div>
+            </div>
         </div>
     )
 }

@@ -8,7 +8,8 @@ import Error from "./error.jsx";
 
 import "@fontsource/secular-one";
 import "@fontsource/shrikhand";
-import "@fontsource/montserrat";
+import "@fontsource/raleway";
+import "@fontsource/alegreya/900-italic.css"
 
 class MainPart extends React.Component {
 
@@ -18,29 +19,25 @@ class MainPart extends React.Component {
   }
 
   componentDidMount() {
-    if (!(this.state.hasBeenLoggedOut))
-      setLocalStorage(this.state.stats === null)
-      .then((finalResult) => {
-        if (finalResult !== null)
-          this.state.stats = finalResult;
-          this.setState({ state: this.state });
-      });
-    else
-      this.state.hasBeenLoggedOut = false;
+    setLocalStorage(this.state.stats === null)
+    .then((finalResult) => {
+      if (finalResult !== null)
+        this.state.stats = finalResult;
+        this.setState({ state: this.state });
+    });
   }
 
   render() {
-    if (this.state.stats === null) {
-      if (localStorage.getItem("access_token") !== null)
+    if (localStorage.getItem("spotify_auth_state") === null)
+      return (
+        <Welcome />
+      )
+    else {
+      if (this.state.stats === null)
         return (
           <Loading />
         )
-      else
-        return (
-          <Welcome />
-        )
-    }
-    else {
+      else {
       if (Object.keys(this.state.stats).includes("error"))
         return (
           <Error stats={this.state.stats} deleteStats={this.deleteStats} />
@@ -49,6 +46,7 @@ class MainPart extends React.Component {
         return (
           <Stats stats={this.state.stats} deleteStats={this.deleteStats} />
         )
+      }
     }
   }
 
