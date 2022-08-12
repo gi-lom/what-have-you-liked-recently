@@ -1,4 +1,6 @@
 import React from "react"
+import PageTransition from 'gatsby-plugin-page-transitions';
+
 import Header from "./header.jsx"
 import Artists from "./elements/artists.jsx"
 import AvgMinMax from "./elements/avgminmax.jsx"
@@ -87,11 +89,9 @@ const Stats = (props) => {
             <div>
                 <Header headerClass={"header-not-welcome"} />
                 {/*Artists*/}
-                <div id="large-stats">
-                    <Artists stats={stats.artists} num={num} />
-                    <div id="stats">
-                        {statsCards}        
-                    </div>
+                <Artists stats={stats.artists} num={num} />
+                <div id="stats">
+                    {statsCards}        
                 </div>
             </div>
         )

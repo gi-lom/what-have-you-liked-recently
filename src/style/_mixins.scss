@@ -98,6 +98,7 @@
     background-color: v.$card-color;
     border-radius: 50px;
     height: auto;
+    border: 1px solid black;
 }
 
 @mixin card-info {

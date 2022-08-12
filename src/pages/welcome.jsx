@@ -12,7 +12,7 @@ const Welcome = () => {
       <Header headerClass={"header-welcome"}/>
 
       <div id="login-button-section">
-        <button id="login-button" onClick={spotifyGetAccessToken}>START</button>
+        <button id="login-button" className="no-error" onClick={spotifyGetAccessToken}>START</button>
       </div>
         
       <div id="cookie-alert">

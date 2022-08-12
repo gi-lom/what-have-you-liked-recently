@@ -20,6 +20,7 @@
     margin-right: 15px;
     padding: 30px;
     width: auto;
+    
 }
 
 .stats-card-columns {
@@ -52,6 +53,7 @@
     .column {
         td {
             border-radius: 5px 5px 0 0;
+            animation: moving-bars-columns 0.6s linear 1;
         }
         tr:nth-child(odd) {
             --color: #f46565;
@@ -61,13 +63,30 @@
         }
     }
 
+    @keyframes moving-bars-columns {
+        from  { transform: scaleY(0); transform-origin: bottom; }
+        to { transform: scaleY(1); transform-origin: bottom; }
+    }
+
     .bar {
         .bar-left {
             border-radius: 15px 0 0 15px;
+            animation: moving-bars-rows-right 0.6s linear 1;
         }
         .bar-right {
             border-radius: 0 15px 15px 0;
+            animation: moving-bars-rows-left 0.6s linear 1;
         }
+    }
+
+    @keyframes moving-bars-rows-right {
+        from  { transform: scaleX(0); transform-origin: right; }
+        to { transform: scaleX(1); transform-origin: right; }
+    }
+
+    @keyframes moving-bars-rows-left {
+        from  { transform: scaleX(0); transform-origin: left; }
+        to { transform: scaleX(1); transform-origin: left; }
     }
 
     .legend {

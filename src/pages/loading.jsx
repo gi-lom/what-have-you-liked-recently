@@ -8,7 +8,7 @@ const Loading = () => {
       <div>
         <Header headerClass={"header-not-welcome"} />
         <div id="loader">
-          <div id="login-button">
+          <div id="login-button" className="no-error">
             <div id="login-button-text">LOADING</div> 
             <div id="login-button-border"></div>
           </div>
