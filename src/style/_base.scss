@@ -53,12 +53,3 @@ footer {
         
     }
 }
-
-.no-error {
-    animation: button-zoom 1s linear 1;
-}
-
-@keyframes button-zoom {
-    from  { transform: scale(0.01) rotate(45deg); }
-    to { transform: scale(1) rotate(0deg); }
-}

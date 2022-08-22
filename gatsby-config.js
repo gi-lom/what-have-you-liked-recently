@@ -4,7 +4,7 @@ module.exports = {
     siteUrl: `https://www.yourdomain.tld`,
   },
   plugins: [
-    'gatsby-plugin-page-transitions',
+    'gatsby-plugin-transition-link',
     'gatsby-plugin-charts-css',
     {
       resolve: 'gatsby-plugin-sass',

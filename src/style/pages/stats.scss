@@ -54,6 +54,7 @@
         td {
             border-radius: 5px 5px 0 0;
             animation: moving-bars-columns 0.6s linear 1;
+            animation-duration: v.$bar-duration;
         }
         tr:nth-child(odd) {
             --color: #f46565;
@@ -72,10 +73,12 @@
         .bar-left {
             border-radius: 15px 0 0 15px;
             animation: moving-bars-rows-right 0.6s linear 1;
+            animation-duration: v.$bar-duration;
         }
         .bar-right {
             border-radius: 0 15px 15px 0;
             animation: moving-bars-rows-left 0.6s linear 1;
+            animation-duration: v.$bar-duration;
         }
     }
 

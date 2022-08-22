@@ -1,5 +1,5 @@
 import React from "react"
-import PageTransition from 'gatsby-plugin-page-transitions';
+import { motion } from "framer-motion"
 
 import Header from "./header.jsx"
 import Artists from "./elements/artists.jsx"
@@ -80,18 +80,23 @@ const Stats = (props) => {
                 
             }
             statsCards.push(
-                <div className="stats-card">
+                <motion.div className="stats-card" initial={{scale: 0.01}} animate={{scale: 1}} transition={{duration: 0.25}}>
                     {nakedCarts[i]}
-                </div>
+                </motion.div>
             )
         }
+
         return (
             <div>
                 <Header headerClass={"header-not-welcome"} />
                 {/*Artists*/}
-                <Artists stats={stats.artists} num={num} />
-                <div id="stats">
-                    {statsCards}        
+                <div>
+                    <motion.div initial={{scale: 0.01}} animate={{scale: 1}} transition={{duration: 0.25}}>
+                        <Artists stats={stats.artists} num={num} />
+                    </motion.div>
+                        <div id="stats">
+                            {statsCards}        
+                        </div>
                 </div>
             </div>
         )
