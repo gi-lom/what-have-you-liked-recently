@@ -15,7 +15,10 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "framer-motion": "^7.2.0",
     "gatsby": "^4.20.0",
+    "gatsby-plugin-charts-css": "^1.0.0",
+    "gatsby-plugin-sass": "^5.21.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0"
   }
