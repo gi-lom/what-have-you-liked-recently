@@ -29,7 +29,7 @@ class MainPart extends React.Component {
 
   render() {
     let authState = typeof window !== 'undefined' ? localStorage.getItem('spotify_auth_state') : null
-    if (authState === null)
+    if (authState === null || window.location.href.split('#').length == 1)
       return (
         <Welcome />
       )

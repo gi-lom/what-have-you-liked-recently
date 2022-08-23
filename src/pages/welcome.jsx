@@ -15,7 +15,7 @@ const Welcome = () => {
         <button id="login-button" className="no-error" onClick={spotifyGetAccessToken}>START</button>
       </div>
         
-      <div id="cookie-alert">
+      <div className="cookie-alert">
         This website does NOT use third-party cookies, except those from Spotify.<br />
         No trackers are present, and the author of this website does not get any profit from the website.< br />
         HOWEVER, in order to work, it has to retrieve data from your Spotify account.<br />

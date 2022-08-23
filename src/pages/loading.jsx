@@ -13,6 +13,17 @@ const Loading = () => {
             <div id="login-button-border"></div>
           </div>
         </div>
+
+          <div className="cookie-alert">
+            <br />
+            <br />
+            <br />
+            If the loading page is stuck, try disabling extensions or browser features that block trackers.
+            <br />
+            The author guarantees there are no trackers outside those necessary for the website to work.
+            <br />
+            Whoever is expert enough can verify this by looking at the repository.
+        </div>
       </div>
     )
   }

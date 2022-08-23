@@ -28,6 +28,13 @@ header {
     @include mixins.header-not-welcome;
 }
 
+.cookie-alert {
+    text-align: center;
+    font-family: v.$disclaimer-font;
+    font-size: v.$disclaimer-size;
+    margin-bottom: 150px;
+}
+
 footer {
     position: fixed;
     left: 0;
