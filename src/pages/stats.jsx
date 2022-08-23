@@ -8,7 +8,6 @@ import Duration from "./elements/duration.jsx"
 import Explicit from "./elements/explicit.jsx"
 import Keys from "./elements/keys.jsx"
 import Mode from "./elements/mode.jsx"
-import ReleaseDates from "./elements/release_dates.jsx"
 
 import '../style/pages/error.scss';
 import '../style/pages/stats.scss';
@@ -63,8 +62,6 @@ const Stats = (props) => {
         let nakedCarts = [
             /*Duration*/
             (<Duration stats={stats.duration_ms} title={"Duration"} description={"How long are your songs?"} least={"shortest"} most={"longest"} num={num}/>),
-            /*Release dates*/
-            (<ReleaseDates stats={stats.release_dates} num={num}/>),
             /*Popularity*/
             (<AvgMinMax data={"Popularity"} stats={stats.popularity} title={"Popularity"} description={"How popular are your songs?"} least={"least popular"} most={"most popular"} num={num}/>),
             /*Danceability*/
