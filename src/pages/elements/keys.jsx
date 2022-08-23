@@ -31,7 +31,7 @@ const isThereSomeUndefined = (chart) => {
 }
 
 const getTds = (charts, num) => {
-    if (charts !== null) {
+    try {
         let tds = [];
         for (let i = 0; i < charts.length; i++)
             tds.push(
@@ -41,11 +41,13 @@ const getTds = (charts, num) => {
             )
         return tds;
     }
-    return []
+    catch (err) {
+        return []
+    }
 }
 
 const getLegends = (charts) => {
-    if (charts !== null) {
+    try {
         let legends = [];
         for (let i = 0; i < charts.length; i++)
             legends.push(
@@ -56,11 +58,13 @@ const getLegends = (charts) => {
             )
         return <div className="legend">{legends}</div>;
     }
-    return <div className="legend" />
+    catch (err) {
+        return <div className="legend" />
+    }
 }
 
 const getGraph = (charts, num) => {
-    if (charts !== null) {
+    try {
         const legends = getLegends(charts.slice(0, 12));
         const tds = getTds(charts.slice(0, 12), num);
         const undef = isThereSomeUndefined(charts[-1]);
@@ -76,7 +80,9 @@ const getGraph = (charts, num) => {
             </div>
         )
     }
-    return <div className="graph" />
+    catch (err) {
+        return <div className="graph" />
+    }
 }
 
 const Keys = (props) => {

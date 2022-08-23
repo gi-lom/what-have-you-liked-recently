@@ -1,7 +1,7 @@
 import React from "react"
 
 const getGraph = (charts, num) => {
-    if (charts !== null) {
+    try {
         return (
             <div className="graph horizontal">
                 <table className="charts-css bar multiple stacked">
@@ -25,7 +25,9 @@ const getGraph = (charts, num) => {
             </div>
         )
     }
-    return <div className="graph horizontal" />
+    catch (err) {
+        return <div className="graph horizontal" />
+    }
 }
 
 const Mode = (props) => {

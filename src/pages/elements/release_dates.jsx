@@ -3,7 +3,7 @@ import React from "react"
 import getFrequencies from "../../modules/ranges/release_dates"
 
 const getTexts = (charts) => {
-    if (typeof charts[0] != "undefined") {
+    try {
         return (
             <div className="text-info">
                 <div className="text-info-section">
@@ -21,7 +21,9 @@ const getTexts = (charts) => {
             </div>
         )
     }
-    return <div className="text-info" />
+    catch (err) {
+        return <div className="text-info" />
+    }
 }
 
 const getLegends = (charts) => {

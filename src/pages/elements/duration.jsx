@@ -9,7 +9,7 @@ const millisecondsToMinutes = (millisec) => {
 }
 
 const howMany = (minmax, which) => {
-    if (minmax !== null) {
+    try {
         let isare = minmax.length > 1 ? "s are" : " is";
         let vals = [];
         for (let i = 0; i < minmax.length; i++) {
@@ -33,11 +33,13 @@ const howMany = (minmax, which) => {
             </div>
         )
     }
-    return <div />
+    catch (err) {
+        return <div />
+    }
 }
 
 const getTexts = (charts) => {
-    if (charts !== null) {
+    try {
         const stats = charts.stats;
         const minValues = howMany(stats.min, charts.least);
         const maxValues = howMany(stats.max, charts.most);
@@ -58,11 +60,13 @@ const getTexts = (charts) => {
             </div>
         )
     }
-    return <div className="text-info" />
+    catch (err) {
+        return <div className="text-info" />
+    }
 }
 
 const getLegends = (charts) => {
-    if (charts !== null) {
+    try {
         let legends = [];
         for (let i = 0; i < Object.keys(charts).length; i++) {
             let label = i == 0 ? "<2:00" : ( i == 9 ? "≥10:00" : i+1+":00");
@@ -75,11 +79,13 @@ const getLegends = (charts) => {
         }
         return <div className="legend">{legends}</div>;
     }
-    return <div />
+    catch (err) {
+        return <div />
+    }
 }
 
 const getTds = (charts) => {
-    if (charts !== null) {
+    try {
         let tds = [];
         for (let i = 0; i < Object.keys(charts).length; i++)
             tds.push(
@@ -90,11 +96,13 @@ const getTds = (charts) => {
             )
         return tds;
     }
-    return []
+    catch (err) {
+        return []
+    }
 }
 
 const getGraph = (charts) => {
-    if (charts !== null) {
+    try {
         const tds = getTds(charts);
         const legends = getLegends(charts);
         return (
@@ -108,7 +116,9 @@ const getGraph = (charts) => {
             </div>
         )
     }
-    return <div className="graph" />
+    catch (err) {
+        return <div className="graph" />
+    }
 }
 
 const Duration = (props) => {

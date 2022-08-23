@@ -2,7 +2,7 @@ import React from "react"
 
    
 const orderArtists = (artists) => {
-    if (artists !== null) {
+    try {
         let artistIds = Object.keys(artists);
         let firstArtists = [];
         let orderedArtists = artistIds.map((id) => {
@@ -17,7 +17,9 @@ const orderArtists = (artists) => {
         }
         return firstArtists;
     }
-    return [];
+    catch (err) {
+        return [];
+    }
 }
 
 const Artists = (props) => {
