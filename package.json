@@ -15,6 +15,10 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@fontsource/alegreya": "^4.5.8",
+    "@fontsource/raleway": "^4.5.10",
+    "@fontsource/secular-one": "^4.5.9",
+    "@fontsource/shrikhand": "^4.5.9",
     "framer-motion": "^7.2.0",
     "gatsby": "^4.20.0",
     "gatsby-plugin-charts-css": "^1.0.0",
