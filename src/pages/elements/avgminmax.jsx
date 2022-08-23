@@ -109,21 +109,26 @@ const getGraph = (charts) => {
 }
 
 const AvgMinMax = (props) => {
-    const charts = props;
-    const texts = getTexts(charts);
-    const frequencies = getFrequencies(
-        charts.stats.list.map( (data) => { return data-(data%10) } ), 0, 100, 10);
-    const graph = getGraph(frequencies);
-    return (
-        <div className="chart">
-            <div className="stats-cards-title">
-                <div className="big"> {charts.title} </div>
-                <div className="description"> {charts.description} </div>
+    try {
+        const charts = props;
+        const texts = getTexts(charts);
+        const frequencies = getFrequencies(
+            charts.stats.list.map( (data) => { return data-(data%10) } ), 0, 100, 10);
+        const graph = getGraph(frequencies);
+        return (
+            <div className="chart">
+                <div className="stats-cards-title">
+                    <div className="big"> {charts.title} </div>
+                    <div className="description"> {charts.description} </div>
+                </div>
+                {texts}
+                {graph}
             </div>
-            {texts}
-            {graph}
-        </div>
-    )
+        )
+    }
+    catch (err) {
+        return <div />
+    }
 }
 
 export default AvgMinMax

@@ -31,18 +31,23 @@ const getGraph = (charts, num) => {
 }
 
 const Explicit = (props) => {
-    const charts = props.stats;
-    const num = props.num;
-    const graph = getGraph(charts, num);
-    return (
-        <div>
-            <div className="stats-cards-title">
-                <div className="big"> Explicitness </div>
-                <div className="description"> How many songs contain explicit content? </div>
+    try {
+        const charts = props.stats;
+        const num = props.num;
+        const graph = getGraph(charts, num);
+        return (
+            <div>
+                <div className="stats-cards-title">
+                    <div className="big"> Explicitness </div>
+                    <div className="description"> How many songs contain explicit content? </div>
+                </div>
+                {graph}
             </div>
-            {graph}
-        </div>
-    )
+        )
+    }
+    catch (err) {
+        return <div />
+    }
 }
 
 export default Explicit

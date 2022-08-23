@@ -80,21 +80,26 @@ const getGraph = (charts, num) => {
 }
 
 const ReleaseDates = (props) => {
-    const charts = props.stats;
-    const num = props.num;
-    const texts = getTexts(charts);
-    const graph = getGraph(getFrequencies(charts.map( (year) => { return year-(year%10) } )), num);
-    return (
-        <div>
-            <div className="stats-cards-title">
-                <div className="big"> Years </div>
-                <div className="description"> How old are your songs? </div>
+    try {
+        const charts = props.stats;
+        const num = props.num;
+        const texts = getTexts(charts);
+        const graph = getGraph(getFrequencies(charts.map( (year) => { return year-(year%10) } )), num);
+        return (
+            <div>
+                <div className="stats-cards-title">
+                    <div className="big"> Years </div>
+                    <div className="description"> How old are your songs? </div>
+                </div>
+                {texts}
+                {graph}
+                <div className="alert"> NOTE: If your faved track comes from a compilation, the compilation's release year will be taken, NOT the song's. Same alert applies for classical music.</div>
             </div>
-            {texts}
-            {graph}
-            <div className="alert"> NOTE: If your faved track comes from a compilation, the compilation's release year will be taken, NOT the song's. Same alert applies for classical music.</div>
-        </div>
-    )
+        )
+    }
+    catch (err) {
+        return <div />
+    }
 }
 
 export default ReleaseDates

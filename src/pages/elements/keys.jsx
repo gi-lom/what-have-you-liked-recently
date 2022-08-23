@@ -86,18 +86,23 @@ const getGraph = (charts, num) => {
 }
 
 const Keys = (props) => {
-    const charts = props.stats;
-    const num = props.num;
-    const graph = getGraph(charts, num);
-    return (
-        <div>
-            <div className="stats-cards-title">
-                <div className="big"> Keys </div>
-                <div className="description"> What key do the songs have? </div>
+    try {
+        const charts = props.stats;
+        const num = props.num;
+        const graph = getGraph(charts, num);
+        return (
+            <div>
+                <div className="stats-cards-title">
+                    <div className="big"> Keys </div>
+                    <div className="description"> What key do the songs have? </div>
+                </div>
+                {graph}
             </div>
-            {graph}
-        </div>
-    )
+        )
+    }
+    catch (err) {
+        return <div />
+    }
 }
 
 export default Keys

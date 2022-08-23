@@ -23,26 +23,31 @@ const orderArtists = (artists) => {
 }
 
 const Artists = (props) => {
-    let artistCharts = orderArtists(props.stats, props.num);
-    let names = "";
-    let pluralArtists = artistCharts.length > 1 ? "Your most faved artists are" : "Your most faved artist is";
-    let pluralTracks = artistCharts[0][2] == 1 ? "" : "s";
-    for (let i = 0; i < artistCharts.length; i++) {
-        if (i > 0)
-            names += ", "
-        names += artistCharts[i][1];
-    }
-    return (
-        <div className="text-info">
-            <div className="text-info-section-artist">
-                <div> {pluralArtists} </div>
-                <div className="stats-cards-title">
-                    <div className="text-info-big"> {names} </div>
+    try {
+        let artistCharts = orderArtists(props.stats, props.num);
+        let names = "";
+        let pluralArtists = artistCharts.length > 1 ? "Your most faved artists are" : "Your most faved artist is";
+        let pluralTracks = artistCharts[0][2] == 1 ? "" : "s";
+        for (let i = 0; i < artistCharts.length; i++) {
+            if (i > 0)
+                names += ", "
+            names += artistCharts[i][1];
+        }
+        return (
+            <div className="text-info">
+                <div className="text-info-section-artist">
+                    <div> {pluralArtists} </div>
+                    <div className="stats-cards-title">
+                        <div className="text-info-big"> {names} </div>
+                    </div>
+                    <div className="text-info-data"> {artistCharts[0][2]} track{pluralTracks} </div>
                 </div>
-                <div className="text-info-data"> {artistCharts[0][2]} track{pluralTracks} </div>
             </div>
-        </div>
-    )
+        )
+    }
+    catch (err) {
+        return <div />
+    }
 }
 
 export default Artists
