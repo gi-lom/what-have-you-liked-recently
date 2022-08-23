@@ -1,28 +1,31 @@
 import React from "react"
 
 const getGraph = (charts, num) => {
-    return (
-        <div className="graph horizontal">
-            <table className="charts-css bar multiple stacked">
-                <tbody>
-                    <tr>
-                        <td className="bar-left" style={{"--size": "calc(" + charts[0] + " / " + num}} />
-                        <td className="bar-right" style={{"--size": "calc(" + charts[1] + " / " + num + ")"}} />
-                    </tr>
-                </tbody>
-            </table>
-            <div className="legend">
-                <span className="legend-left">
-                    <div className="legend-data">Minor key</div>
-                    <div className="legend-label">{charts[0]}</div>
-                </span>
-                <span className="legend-right">
-                    <div className="legend-data">Major key</div>
-                    <div className="legend-label">{charts[1]}</div>
-                </span>
+    if (charts !== null) {
+        return (
+            <div className="graph horizontal">
+                <table className="charts-css bar multiple stacked">
+                    <tbody>
+                        <tr>
+                            <td className="bar-left" style={{"--size": "calc(" + charts[0] + " / " + num}} />
+                            <td className="bar-right" style={{"--size": "calc(" + charts[1] + " / " + num + ")"}} />
+                        </tr>
+                    </tbody>
+                </table>
+                <div className="legend">
+                    <span className="legend-left">
+                        <div className="legend-data">Minor key</div>
+                        <div className="legend-label">{charts[0]}</div>
+                    </span>
+                    <span className="legend-right">
+                        <div className="legend-data">Major key</div>
+                        <div className="legend-label">{charts[1]}</div>
+                    </span>
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
+    return <div className="graph horizontal" />
 }
 
 const Mode = (props) => {

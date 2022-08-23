@@ -27,65 +27,77 @@ const howMany = (minmax, which) => {
 }
 
 const getTexts = (charts) => {
-    const stats = charts.stats;
-    const minValues = howMany(stats.min, charts.least);
-    const maxValues = howMany(stats.max, charts.most);
-    return (
-        <div className="text-info">
-            <div className="text-info-section">
-                {minValues}
-                <div className="text-info-data"> {Math.round(stats.min[0].value)}%</div>
+    if (charts !== null) {
+        const stats = charts.stats;
+        const minValues = howMany(stats.min, charts.least);
+        const maxValues = howMany(stats.max, charts.most);
+        return (
+            <div className="text-info">
+                <div className="text-info-section">
+                    {minValues}
+                    <div className="text-info-data"> {Math.round(stats.min[0].value)}%</div>
+                </div>
+                <div className="text-info-section">
+                    {maxValues}
+                    <div className="text-info-data"> {Math.round(stats.max[0].value)}%</div>
+                </div>
+                <div className="text-info-section">
+                    <div className="text-info-small"> Your average {charts.title.toLowerCase()} is </div>
+                    <div className="text-info-big"> { Math.round(stats.list.reduce((a,b) => a+b, 0)/stats.list.length)}% </div>
+                </div>
             </div>
-            <div className="text-info-section">
-                {maxValues}
-                <div className="text-info-data"> {Math.round(stats.max[0].value)}%</div>
-            </div>
-            <div className="text-info-section">
-                <div className="text-info-small"> Your average {charts.title.toLowerCase()} is </div>
-                <div className="text-info-big"> { Math.round(stats.list.reduce((a,b) => a+b, 0)/stats.list.length)}% </div>
-            </div>
-        </div>
-    )
+        )
+    }
+    return <div className="text-info" />
 }
 
 const getLegends = (charts) => {
-    let legends = [];
-    for (let i = 0; i < Object.keys(charts).length; i++) {
-        legends.push(
-            <span className="legend-center">
-                <div className="legend-data">{Object.keys(charts)[i]}%</div>
-                <div className="legend-label">{charts[Object.keys(charts)[i]]}</div>
-            </span>
-        )
+    if (charts !== null) {
+        let legends = [];
+        for (let i = 0; i < Object.keys(charts).length; i++) {
+            legends.push(
+                <span className="legend-center">
+                    <div className="legend-data">{Object.keys(charts)[i]}%</div>
+                    <div className="legend-label">{charts[Object.keys(charts)[i]]}</div>
+                </span>
+            )
+        }
+        return <div className="legend">{legends}</div>;
     }
-    return <div className="legend">{legends}</div>;
+    return <div className="legend"></div>
 }
 
 const getTds = (charts) => {
-    let tds = [];
-    for (let i = 0; i < Object.keys(charts).length; i++)
-        tds.push(
-            <tr key={"tr" + i}>
-                <td key={"td" + i} style={{"--size": "calc(" + charts[Object.keys(charts)[i]] + " / 100)"}}>
-                </td>
-            </tr>
-        )
-    return tds;
+    if (charts !== null) {
+        let tds = [];
+        for (let i = 0; i < Object.keys(charts).length; i++)
+            tds.push(
+                <tr key={"tr" + i}>
+                    <td key={"td" + i} style={{"--size": "calc(" + charts[Object.keys(charts)[i]] + " / 100)"}}>
+                    </td>
+                </tr>
+            )
+        return tds;
+    }
+    return []
 }
 
 const getGraph = (charts) => {
-    const tds = getTds(charts);
-    const legends = getLegends(charts);
-    return (
-        <div className="graph">
-            <table className="charts-css column show-labels show-data-axes show-primary-axis show-10-secondary-axes data-spacing-2">
-                <tbody>
-                    {tds}
-                </tbody>
-            </table>
-            {legends}
-        </div>
-    )
+    if (charts !== null) {
+        const tds = getTds(charts);
+        const legends = getLegends(charts);
+        return (
+            <div className="graph">
+                <table className="charts-css column show-labels show-data-axes show-primary-axis show-10-secondary-axes data-spacing-2">
+                    <tbody>
+                        {tds}
+                    </tbody>
+                </table>
+                {legends}
+            </div>
+        )
+    }
+    return <div className="graph" />
 }
 
 const AvgMinMax = (props) => {
