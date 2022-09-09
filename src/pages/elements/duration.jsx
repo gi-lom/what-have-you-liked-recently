@@ -5,6 +5,8 @@ const millisecondsToMinutes = (millisec) => {
     let sec = parseInt(millisec/1000);
     let min = Math.floor(sec/60);
     let secInMin = sec - min*60;
+    if (secInMin < 10)
+        secInMin = "0"+secInMin;
     return min+":"+secInMin;
 }
 
@@ -43,19 +45,20 @@ const getTexts = (charts) => {
         const stats = charts.stats;
         const minValues = howMany(stats.min, charts.least);
         const maxValues = howMany(stats.max, charts.most);
+        console.log(stats.list.reduce((a,b) => a+b, 0)/stats.list.length)
         return (
             <div className="text-info">
                 <div className="text-info-section">
                     {minValues}
-                    <div className="text-info-data"> {millisecondsToMinutes(Math.round(stats.min[0].value))}</div>
+                    <div className="text-info-data"> {millisecondsToMinutes(Math.floor(stats.min[0].value))}</div>
                 </div>
                 <div className="text-info-section">
                     {maxValues}
-                    <div className="text-info-data"> {millisecondsToMinutes(Math.round(stats.max[0].value))}</div>
+                    <div className="text-info-data"> {millisecondsToMinutes(Math.floor(stats.max[0].value))}</div>
                 </div>
                 <div className="text-info-section">
                     <div className="text-info-small"> Your average {charts.title.toLowerCase()} is </div>
-                    <div className="text-info-big"> { millisecondsToMinutes(Math.round(stats.list.reduce((a,b) => a+b, 0)/stats.list.length))} </div>
+                    <div className="text-info-big"> { millisecondsToMinutes(Math.floor(stats.list.reduce((a,b) => a+b, 0)/stats.list.length))} </div>
                 </div>
             </div>
         )
