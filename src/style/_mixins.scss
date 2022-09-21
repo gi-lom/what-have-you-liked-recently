@@ -73,12 +73,10 @@
 }
 
 @mixin header-not-welcome {
-    margin-bottom: 75px;
     #title {
         margin-left: auto;
         margin-right: auto;
         margin-top: 10px;
-        margin-bottom: 10px;
         width: max-content;
         font-size: 200%;
         padding: 10px 30px;

@@ -5,6 +5,7 @@ import Welcome from "./welcome.jsx";
 import Loading from "./loading.jsx";
 import Stats from "./stats.jsx";
 import Error from "./error.jsx";
+import Header from "./header.jsx";
 
 import "@fontsource/secular-one";
 import "@fontsource/shrikhand";
@@ -15,7 +16,8 @@ class MainPart extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { stats: null };
+    this.state = { stats: null, forceRender: false };
+    this.logout = this.logout.bind(this);
   }
 
   componentDidMount() {
@@ -27,27 +29,46 @@ class MainPart extends React.Component {
     });
   }
 
+  logout() {
+    if (window.confirm("This will log you out of Spotify in the whole browser. Continue?")) {
+      localStorage.clear()
+      sessionStorage.clear()
+      const url = 'https://accounts.spotify.com/logout'
+      const spotifyLogoutWindow = window.open(url, 'Spotify Logout', 'width=700,height=500,top=40,left=40')
+      const timeout = Promise.resolve(setTimeout(() => spotifyLogoutWindow.close(), 500))
+      timeout.then(() => { this.forceUpdate() } )
+    }
+  }
+
   render() {
     let authState = typeof window !== 'undefined' ? localStorage.getItem('spotify_auth_state') : null
-    if (authState === null || window.location.href.split('#').length == 1)
+    if (authState === null || window.location.href.split('#').length == 1) {
+      localStorage.clear()
       return (
         <Welcome />
       )
+    }
     else {
+      let el = <div />
       if (this.state.stats === null)
-        return (
-          <Loading />
-        )
+        el = <Loading forceRender={this.forceRender} />
       else {
       if (Object.keys(this.state.stats).includes("error"))
-        return (
-          <Error stats={this.state.stats} deleteStats={this.deleteStats} />
-        )
+        el = <Error stats={this.state.stats} forceRender={this.forceRender} />
       else
-        return (
-          <Stats stats={this.state.stats} deleteStats={this.deleteStats} />
-        )
+          el = <Stats stats={this.state.stats} forceRender={this.forceRender} />
       }
+      return (
+        <>
+          <Header headerClass={"header-not-welcome"} />
+          <div id="logout-container">
+            <button id="logout" onClick={this.logout}>
+              Logout
+            </button>
+          </div>
+          {el}
+        </>
+      )
     }
   }
 

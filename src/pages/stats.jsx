@@ -15,13 +15,13 @@ import '../style/pages/stats.scss';
 
 
 const Stats = (props) => {
+    const forceRender = () => props.forceRender()
     try {
         let stats = props.stats;
         let num = props.stats.duration_ms.list.length;
         if (num == 0)
             return(
                 <div>
-                    <Header headerClass={"header-not-welcome"} />
                     <div id="loader">
                         <div id="error-button">
                             <div id="error-button-text">
@@ -86,7 +86,6 @@ const Stats = (props) => {
             }  
             return (
                 <div>
-                    <Header headerClass={"header-not-welcome"} />
                     {/*Artists*/}
                     <div>
                         <motion.div initial={{scale: 0.01}} animate={{scale: 1}} transition={{duration: 0.25}}>

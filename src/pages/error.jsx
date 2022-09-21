@@ -7,7 +7,6 @@ const Error = (props) => {
     try {
         return (
             <div>
-                    <Header headerClass={"header-not-welcome"} />
                     <div id="loader">
                         <div id="error-button">
                             <div id="error-button-text">

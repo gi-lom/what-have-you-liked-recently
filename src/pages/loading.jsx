@@ -6,7 +6,6 @@ import '../style/pages/loading.scss';
 const Loading = () => {
     return (
       <div>
-        <Header headerClass={"header-not-welcome"} />
         <div id="loader">
           <div id="login-button" className="no-error">
             <div id="login-button-text">LOADING</div> 

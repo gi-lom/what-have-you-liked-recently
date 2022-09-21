@@ -25,5 +25,6 @@ export default function spotifyGetAccessToken () {
     url += "&redirect_uri=" + encodeURIComponent(getRedirectURI(window.location));
     url += "&response_type=token";
     url += "&state=" + encodeURIComponent(state);
+    url += "&show_dialog=true";
     window.location = url;
 }

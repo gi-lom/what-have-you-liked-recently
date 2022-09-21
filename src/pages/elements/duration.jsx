@@ -45,7 +45,6 @@ const getTexts = (charts) => {
         const stats = charts.stats;
         const minValues = howMany(stats.min, charts.least);
         const maxValues = howMany(stats.max, charts.most);
-        console.log(stats.list.reduce((a,b) => a+b, 0)/stats.list.length)
         return (
             <div className="text-info">
                 <div className="text-info-section">

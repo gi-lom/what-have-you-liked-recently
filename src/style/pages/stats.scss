@@ -141,7 +141,6 @@
     
     .description {
         font-size: 110%;
-        margin-top: -7.5px;
         margin-bottom: 20px;
     }
 }
@@ -149,7 +148,7 @@
 .text-info-section-artist {
     @include mixins.card-body;
     width: 100%;
-    margin: -45px 45px 0px 45px;
+    margin: 0px 45px 0px 45px;
     font-family: v.$text-font;
     display: block;
     height: auto;
