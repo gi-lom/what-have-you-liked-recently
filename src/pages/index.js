@@ -27,7 +27,9 @@ class MainPart extends React.Component {
     .then((finalResult) => {
       if (finalResult !== null)
         this.state.stats = finalResult;
-        this.setState({ state: this.state });
+      this.setState({ state: this.state });
+      if (authState === null || window.location.href.split('#').length == 1)
+      localStorage.clear()
     });
   }
 
@@ -44,12 +46,10 @@ class MainPart extends React.Component {
 
   render() {
     let authState = typeof window !== 'undefined' ? localStorage.getItem('spotify_auth_state') : null
-    if (authState === null || window.location.href.split('#').length == 1) {
-      localStorage.clear()
+    if (authState === null || window.location.href.split('#').length == 1)
       return (
         <Welcome />
       )
-    }
     else {
       let el = <div />
       if (this.state.stats === null)
