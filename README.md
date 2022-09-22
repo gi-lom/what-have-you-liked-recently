@@ -18,6 +18,10 @@ This website tells you the following statistics about the latest 50 songs you fa
 
 The meaning of these stats can be read on [Spotify's official documentation.](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-features)
 
+## Changelog
+
+- 2022/09/22: Added logout button and Spotify links to artists' and tracks' names
+
 
 ## FAQ (Will add more questions with time, if needed)
 
