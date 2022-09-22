@@ -70,6 +70,7 @@ const spotifyGetLibraryList = (access_token) => {
                       mode: tr_f.mode,
                       valence: tr_f.valence,
                       duration_ms: tr_f.duration_ms,
+                      url: tr.items[i].track.external_urls.spotify
                     });
                   } else resolve(tr);
                 });
@@ -121,6 +122,7 @@ const spotifyGetLibrary = (access_token) => {
             if (!(artist.id in stats.artists))
               stats.artists[artist.id] = {
                 name: artist.name,
+                url: artist.external_urls.spotify,
                 frequency: 1,
               };
             else stats.artists[artist.id].frequency++;
@@ -148,6 +150,7 @@ const spotifyGetLibrary = (access_token) => {
               newm["artist"] = el["artists"];
               newm["name"] = el["name"];
               newm["value"] = val;
+              newm["url"] = el["url"];
               if (stats[st][minmax].length === 0) stats[st][minmax].push(newm);
               else {
                 let valueToCheck =

@@ -2,13 +2,25 @@
 @use '../mixins.scss' as mixins;
 @use '../variables.scss' as v;
 
-#stats {
+#alert {
+    font-family: v.$title-font;
+    margin: auto;
+    width: 100%;
+    #alert-text {
+        width: 55%;
+        margin: auto;
+        margin-top: -55px;
+        margin-bottom: 50px;
+    }
+}
+
+.stats {
     font-weight: bold;
     font-size: 110%;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
-    margin: 0px 30px 80px 30px;
+    margin: 0px 30px 0px 30px;
 }
 
 .stats-card {
@@ -141,6 +153,7 @@
     
     .description {
         font-size: 110%;
+        margin-top: -7.5px;
         margin-bottom: 20px;
     }
 }
@@ -148,7 +161,7 @@
 .text-info-section-artist {
     @include mixins.card-body;
     width: 100%;
-    margin: 0px 45px 0px 45px;
+    margin: -45px 45px 0px 45px;
     font-family: v.$text-font;
     display: block;
     height: auto;
@@ -179,6 +192,7 @@
     display: block;
     font-size: 75%;
     margin-bottom: 15px;
+    margin-top: 10px;
 }
 
 .text-info-small {
@@ -191,9 +205,36 @@
     font-size: 24px;
 }
 
+.spotify-link {
+    transition: 0.2s;
+}
+
+.spotify-link:hover {
+    cursor: pointer;
+    color: v.$slogan-color;
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 900px) {
+    #alert {
+        #alert-text {
+            width: 40%;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #alert {
+        #alert-text {
+            width: 95%;
+            margin-top: 0;
+        }
+    }
+}
+
 @media screen and (max-width: 690px) {
-    #stats {
-        margin: -50px 0 80px 0;
+    .stats {
+        margin: 10px 0;
         padding: 15px 2px 0 2px;
         border-radius: 50px 50px 0 0;
         background-color: transparent;
@@ -202,10 +243,8 @@
         position: relative;
     }
 
-    .text-info-section-artist {
-        box-shadow: 5px 5px v.$box-shadow-color;
-        margin: -50px 0px 5px 0px;
-        width: 90.5%;
+    #artists {
+        margin: -25px 0;
     }
 
     .stats-card {
@@ -247,12 +286,25 @@
         font-size: 60%;
     }
 
+    .stats-card-columns {
+        margin: -5px 0;
+        .stats-card {
+            margin: 5px 0;
+        }
+    }
+
     .multiple {
         margin: 0;
     }
 
     .artist {
-        margin: -45px 5px -60px 5px;
+        margin: 0 5px 0 5px;
+    }
+
+    .by {
+        margin-top: 15px;
+        font-size: 14px;
+
     }
 
 }

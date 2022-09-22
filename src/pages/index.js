@@ -12,6 +12,8 @@ import "@fontsource/shrikhand";
 import "@fontsource/raleway";
 import "@fontsource/alegreya/900-italic.css"
 
+import spotifyLogo from '../images/spotify.png'
+
 class MainPart extends React.Component {
 
   constructor(props) {
@@ -62,6 +64,9 @@ class MainPart extends React.Component {
         <>
           <Header headerClass={"header-not-welcome"} />
           <div id="logout-container">
+            <div className="spotify-logo">
+              <img src={spotifyLogo} />
+            </div>
             <button id="logout" onClick={this.logout}>
               Logout
             </button>

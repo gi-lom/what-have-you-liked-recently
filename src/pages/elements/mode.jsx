@@ -36,7 +36,7 @@ const Mode = (props) => {
         const num = props.num;
         const graph = getGraph(charts, num);
         return (
-            <div>
+            <div className="chart">
                 <div className="stats-cards-title">
                     <div className="big"> Mode </div>
                     <div className="description"> How many songs are in a minor or major key? </div>

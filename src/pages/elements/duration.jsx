@@ -12,19 +12,30 @@ const millisecondsToMinutes = (millisec) => {
 
 const howMany = (minmax, which) => {
     try {
+        console.log(minmax)
         let isare = minmax.length > 1 ? "s are" : " is";
         let vals = [];
         for (let i = 0; i < minmax.length; i++) {
-            let artistList = "";
+            let artistList = [];
             for (let j = 0; j < minmax[i].artist.length; j++) {
-                artistList += minmax[i].artist[j].name;
-                if (j < minmax[i].artist.length-1)
-                    artistList += ", ";
+                let comma = j < minmax[i].artist.length-1 ? ", " : ""
+                artistList.push(
+                    <span>
+                        <span className="spotify-link" onClick={() => window.open(minmax[i].artist[j].external_urls.spotify, "_blank").focus()}>
+                            {minmax[i].artist[j].name}
+                        </span>
+                        {comma}
+                    </span>       
+                )
             }
             vals.push(
                 <div>
-                    <div className="text-info-big"> {minmax[i].name} </div>
-                    <span className="by"> {artistList}</span>
+                    <div className="text-info-big">
+                        <span className="spotify-link" onClick={() => window.open(minmax[i].url, "_blank").focus()}>
+                            {minmax[i].name}
+                        </span>
+                    </div>
+                    <span className="by"> {artistList} </span>
                 </div>
             )
         }

@@ -85,15 +85,22 @@ const Stats = (props) => {
                 )
             }  
             return (
-                <div>
+                <div style={{marginBottom: "90px"}}>
                     {/*Artists*/}
                     <div>
-                        <motion.div initial={{scale: 0.01}} animate={{scale: 1}} transition={{duration: 0.25}}>
-                            <Artists stats={stats.artists} num={num} />
-                        </motion.div>
-                            <div id="stats">
-                                {statsCards}        
+                        <div id="alert">
+                            <div id="alert-text">
+                                Click on the artists' and tracks' names to open them on Spotify.
                             </div>
+                        </div>
+                        <div className="stats" id="artists">
+                            <motion.div className="stats-card" initial={{scale: 0.01}} animate={{scale: 1}} transition={{duration: 0.25}}>
+                                <Artists stats={stats.artists} num={num} title={"Artists"} description={"Who's your most faved artist?"} />
+                            </motion.div>
+                        </div>
+                        <div className="stats">
+                            {statsCards}        
+                        </div>
                     </div>
                 </div>
             )
