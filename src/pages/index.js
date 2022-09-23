@@ -28,8 +28,6 @@ class MainPart extends React.Component {
       if (finalResult !== null)
         this.state.stats = finalResult;
       this.setState({ state: this.state });
-      if (authState === null || window.location.href.split('#').length == 1)
-      localStorage.clear()
     });
   }
 

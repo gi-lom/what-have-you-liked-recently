@@ -14,6 +14,7 @@ const generateRandomString = length => {
 
 export default function spotifyGetAccessToken () {
     // authorize user and get access token
+    localStorage.clear();
     const SPOTIFY_CLIENT_ID = "6de8e9bb834648af8dfd1d3ec29a09be";
     let scope = "user-library-read";
     let url = "https://accounts.spotify.com/authorize";
