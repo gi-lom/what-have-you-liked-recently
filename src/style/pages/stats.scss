@@ -3,7 +3,7 @@
 @use '../variables.scss' as v;
 
 #alert {
-    font-family: v.$title-font;
+    font-family: v.$text-font;
     margin: auto;
     width: 100%;
     #alert-text {
