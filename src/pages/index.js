@@ -88,7 +88,7 @@ const IndexPage = () => {
 
       <footer>
         Released under GPL3 license<br />
-        Author: gi-lom - <a href="https://github.com/gi-lom/what-have-i-liked-recently">Github page</a>
+        Author: gi-lom - <a href="https://github.com/gi-lom/what-have-you-liked-recently">Github page</a>
       </footer>
     </main>
   )
