@@ -97,9 +97,7 @@ const IndexPage = () => {
     <main>
       <Helmet htmlAttributes={{ lang: "en" }}>
         <title>What Have You Liked Recently?</title>
-        {props.robots == "nofollow" && (
-          <link rel="canonical" href="https://whathaveyoulikedrecently.gatsbyjs.io" />
-        )}
+        <link rel="canonical" href="https://whathaveyoulikedrecently.gatsbyjs.io" />
         <meta charset="utf-8" />
         <meta
           name="description"
