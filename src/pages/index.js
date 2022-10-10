@@ -111,7 +111,7 @@ const IndexPage = () => {
         />
         <meta name="author" content="gi-lom" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="robots" content={props.robots} />
+        <meta name="robots" content="all" />
       </Helmet>
 
       <MainPart />
