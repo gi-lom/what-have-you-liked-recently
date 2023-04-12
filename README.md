@@ -1,7 +1,7 @@
 # What Have You Liked Recently?
 ## Detailed statistics of the latest 50 songs you faved on Spotify
 
-### [Access to the website here](whathaveyoulikedrecently.gatsbyjs.io)
+### Website: whathaveyoulikedrecently.gatsbyjs.io
 
 This website tells you the following statistics about the latest 50 songs you faved on Spotify:
 
